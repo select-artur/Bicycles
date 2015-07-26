@@ -22,26 +22,6 @@ namespace Bicycles
 
         private void bicyclesForm_Load(object sender, EventArgs e)
         {
-            //using (var db = new BicycleContext())
-            //{
-            //    var t = (from bt in db.BicycleTypes
-            //             where bt.Name == "Дорожный"
-            //             select bt).FirstOrDefault();
-            //    db.BicycleTypes.Remove(t);
-            //    db.BicycleTypes.Add(new BicycleType() { Name = "Шоссейный" });
-            //db.BicycleTypes.Add(new BicycleType() { Name = "Городской" });
-            //db.BicycleTypes.Add(new BicycleType() { Name = "Круизер" });
-            //db.BicycleTypes.Add(new BicycleType() { Name = "Горный" });
-            //db.BicycleTypes.Add(new BicycleType() { Name = "Дорожный" });
-            //db.BicycleTypes.Add(new BicycleType() { Name = "Туринг" });
-
-            //db.AmortizationTypes.Add(new AmortizationType() { Name = "Двухподвес" });
-            //db.AmortizationTypes.Add(new AmortizationType() { Name = "Хардтейл" });
-            //db.AmortizationTypes.Add(new AmortizationType() { Name = "Ригид" });
-
-            //    db.SaveChanges();
-            //}
-
             _context = new BicycleContext();
             _context.BicycleTypes.Load();
             _context.AmortizationTypes.Load();

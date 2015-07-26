@@ -21,32 +21,6 @@ namespace Bicycles
         public virtual List<Bicycle> Bicycles { get; set; }
     }
 
-    //public enum BicycleTypes
-    //{
-    //    [Display(Name = "BMX")]
-    //    BMX,
-    //    [Display(Name = "Городской")]
-    //    City,
-    //    [Display(Name = "Круизер")]
-    //    Cruiser,
-    //    [Display(Name = "Горный")]
-    //    Mountain,
-    //    [Display(Name = "Дорожный")]
-    //    Road,
-    //    [Display(Name = "Туринг")]
-    //    Touring
-    //}
-
-    //public enum AmortizationTypes
-    //{
-    //    [Display(Name = "Двухподвес")]
-    //    FullSuspension,
-    //    [Display(Name = "Хардтейл")]
-    //    HardTail,
-    //    [Display(Name = "Ригид")]
-    //    Rigid
-    //}
-
     public class Bicycle
     {
         public int Id { get; set; }
