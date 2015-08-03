@@ -43,5 +43,11 @@ namespace Bicycles
         {
             _context.Dispose();
         }
+
+        private void exportToOOButton_Click(object sender, EventArgs e)
+        {
+            var ooExport = new OpenOffice();
+            ooExport.ExportToWriter(AppDomain.CurrentDomain.BaseDirectory + "Bicycles.ott", new string[0]);
+        }
     }
 }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(bicyclesForm));
             this.bicycleBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bicycleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -43,23 +44,23 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bicycleBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.exportToOOButton = new System.Windows.Forms.ToolStripButton();
             this.bicycleDataGridView = new System.Windows.Forms.DataGridView();
-            this.bicycleTypeComboBox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.amortizationTypeComboBox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.bicycleTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.amortizationTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bicycleTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bicycleTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.amortizationTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.amortizationTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bicycleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bicycleTypeComboBox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.amortizationTypeComboBox = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bicycleBindingNavigator)).BeginInit();
             this.bicycleBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bicycleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicycleDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicycleTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.amortizationTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bicycleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bicycleBindingNavigator
@@ -80,7 +81,8 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.bicycleBindingNavigatorSaveItem});
+            this.bicycleBindingNavigatorSaveItem,
+            this.exportToOOButton});
             this.bicycleBindingNavigator.Location = new System.Drawing.Point(8, 8);
             this.bicycleBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bicycleBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -100,6 +102,10 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
+            // 
+            // bicycleBindingSource
+            // 
+            this.bicycleBindingSource.DataSource = typeof(Bicycles.Bicycle);
             // 
             // bindingNavigatorCountItem
             // 
@@ -186,6 +192,15 @@
             this.bicycleBindingNavigatorSaveItem.Text = "Сохранить данные";
             this.bicycleBindingNavigatorSaveItem.Click += new System.EventHandler(this.bicycleBindingNavigatorSaveItem_Click);
             // 
+            // exportToOOButton
+            // 
+            this.exportToOOButton.Image = ((System.Drawing.Image)(resources.GetObject("exportToOOButton.Image")));
+            this.exportToOOButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToOOButton.Name = "exportToOOButton";
+            this.exportToOOButton.Size = new System.Drawing.Size(145, 22);
+            this.exportToOOButton.Text = "Экспорт в OpenOffice";
+            this.exportToOOButton.Click += new System.EventHandler(this.exportToOOButton_Click);
+            // 
             // bicycleDataGridView
             // 
             this.bicycleDataGridView.AutoGenerateColumns = false;
@@ -202,44 +217,6 @@
             this.bicycleDataGridView.Name = "bicycleDataGridView";
             this.bicycleDataGridView.Size = new System.Drawing.Size(631, 295);
             this.bicycleDataGridView.TabIndex = 2;
-            // 
-            // bicycleTypeComboBox
-            // 
-            this.bicycleTypeComboBox.DataPropertyName = "BicycleType";
-            this.bicycleTypeComboBox.HeaderText = "Тип";
-            this.bicycleTypeComboBox.Name = "bicycleTypeComboBox";
-            this.bicycleTypeComboBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.bicycleTypeComboBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // amortizationTypeComboBox
-            // 
-            this.amortizationTypeComboBox.DataPropertyName = "AmortizationType";
-            this.amortizationTypeComboBox.HeaderText = "Амортизация";
-            this.amortizationTypeComboBox.Name = "amortizationTypeComboBox";
-            this.amortizationTypeComboBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.amortizationTypeComboBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // bicycleTypeColumn
-            // 
-            this.bicycleTypeColumn.DataPropertyName = "BicycleTypeId";
-            this.bicycleTypeColumn.DataSource = this.bicycleTypeBindingSource;
-            this.bicycleTypeColumn.DisplayMember = "Name";
-            this.bicycleTypeColumn.HeaderText = "Тип";
-            this.bicycleTypeColumn.Name = "bicycleTypeColumn";
-            this.bicycleTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.bicycleTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.bicycleTypeColumn.ValueMember = "Id";
-            // 
-            // amortizationTypeColumn
-            // 
-            this.amortizationTypeColumn.DataPropertyName = "AmortizationTypeId";
-            this.amortizationTypeColumn.DataSource = this.amortizationTypeBindingSource;
-            this.amortizationTypeColumn.DisplayMember = "Name";
-            this.amortizationTypeColumn.HeaderText = "Амортизация";
-            this.amortizationTypeColumn.Name = "amortizationTypeColumn";
-            this.amortizationTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.amortizationTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.amortizationTypeColumn.ValueMember = "Id";
             // 
             // idColumn
             // 
@@ -260,17 +237,51 @@
             this.priceColumn.HeaderText = "Цена";
             this.priceColumn.Name = "priceColumn";
             // 
+            // bicycleTypeColumn
+            // 
+            this.bicycleTypeColumn.DataPropertyName = "BicycleTypeId";
+            this.bicycleTypeColumn.DataSource = this.bicycleTypeBindingSource;
+            this.bicycleTypeColumn.DisplayMember = "Name";
+            this.bicycleTypeColumn.HeaderText = "Тип";
+            this.bicycleTypeColumn.Name = "bicycleTypeColumn";
+            this.bicycleTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.bicycleTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.bicycleTypeColumn.ValueMember = "Id";
+            // 
             // bicycleTypeBindingSource
             // 
             this.bicycleTypeBindingSource.DataSource = typeof(Bicycles.BicycleType);
+            // 
+            // amortizationTypeColumn
+            // 
+            this.amortizationTypeColumn.DataPropertyName = "AmortizationTypeId";
+            this.amortizationTypeColumn.DataSource = this.amortizationTypeBindingSource;
+            this.amortizationTypeColumn.DisplayMember = "Name";
+            this.amortizationTypeColumn.HeaderText = "Амортизация";
+            this.amortizationTypeColumn.Name = "amortizationTypeColumn";
+            this.amortizationTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.amortizationTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.amortizationTypeColumn.ValueMember = "Id";
             // 
             // amortizationTypeBindingSource
             // 
             this.amortizationTypeBindingSource.DataSource = typeof(Bicycles.AmortizationType);
             // 
-            // bicycleBindingSource
+            // bicycleTypeComboBox
             // 
-            this.bicycleBindingSource.DataSource = typeof(Bicycles.Bicycle);
+            this.bicycleTypeComboBox.DataPropertyName = "BicycleType";
+            this.bicycleTypeComboBox.HeaderText = "Тип";
+            this.bicycleTypeComboBox.Name = "bicycleTypeComboBox";
+            this.bicycleTypeComboBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.bicycleTypeComboBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // amortizationTypeComboBox
+            // 
+            this.amortizationTypeComboBox.DataPropertyName = "AmortizationType";
+            this.amortizationTypeComboBox.HeaderText = "Амортизация";
+            this.amortizationTypeComboBox.Name = "amortizationTypeComboBox";
+            this.amortizationTypeComboBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.amortizationTypeComboBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // bicyclesForm
             // 
@@ -288,10 +299,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bicycleBindingNavigator)).EndInit();
             this.bicycleBindingNavigator.ResumeLayout(false);
             this.bicycleBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bicycleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicycleDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicycleTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.amortizationTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bicycleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,6 +335,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn bicycleTypeColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn amortizationTypeColumn;
+        private System.Windows.Forms.ToolStripButton exportToOOButton;
     }
 }
 
