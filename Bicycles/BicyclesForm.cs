@@ -46,8 +46,22 @@ namespace Bicycles
 
         private void exportToOOButton_Click(object sender, EventArgs e)
         {
+            var bicyclesTable = new object[bicycleDataGridView.Rows.Count];
+            int i = 0;
+            foreach (DataGridViewRow row in bicycleDataGridView.Rows)
+            {
+                bicyclesTable[i] = new string[] {
+                    Convert.ToString(row.Cells[1].Value),
+                    Convert.ToString(row.Cells[2].Value),
+                    Convert.ToString(row.Cells[3].FormattedValue),
+                    Convert.ToString(row.Cells[4].FormattedValue)};
+                i++;
+            }
+
             var ooExport = new OpenOffice();
-            ooExport.ExportToWriter(AppDomain.CurrentDomain.BaseDirectory + "Bicycles.ott", new string[0]);
+            ooExport.ExportToWriter(
+                AppDomain.CurrentDomain.BaseDirectory + "Bicycles.ott",
+                bicyclesTable);
         }
     }
 }

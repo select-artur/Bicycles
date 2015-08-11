@@ -36,7 +36,7 @@ namespace Bicycles
             return String.Format("file:///{0}", filePath.Replace(@"\", "/"));
         }
 
-        private void RunMacro(XComponent document, string macroName, string[] macroParam)
+        private void RunMacro(XComponent document, string macroName, object[] macroParam)
         {
             var providerSupplier = (XScriptProviderSupplier)document;
             if (document != null)
@@ -44,9 +44,11 @@ namespace Bicycles
                 var provider = providerSupplier.getScriptProvider();
                 var script = provider.getScript(
                     String.Format("vnd.sun.star.script:{0}?language=Basic&location=document", macroName));
-                
+
+                // Convert macroParam to Any array
+                var macroParamAny = Array.ConvertAll(macroParam, item => new Any(item.GetType(), item));
                 var param = new Any[] {
-                    new Any(macroParam.GetType(), macroParam)};
+                    new Any(macroParamAny.GetType(), macroParamAny)};
 
                 var outParamIndex = new short[0];
                 var outParam = new Any[0];
@@ -67,7 +69,7 @@ namespace Bicycles
                 loadProps);
         }
 
-        public void ExportToWriter(string filePath, string[] dataToExport)
+        public void ExportToWriter(string filePath, object[] dataToExport)
         {
             var document = LoadTemplate(filePath);
             RunMacro(document, "Standard.Main.LoadData", dataToExport);
